@@ -1,8 +1,9 @@
 import { X, Star, Calendar, Clapperboard, Globe } from "lucide-react";
 
 function MovieDetailsModal({ selectedMovie, handleCloseModal }) {
-  const imageUrl =
-    selectedMovie?.image?.original || selectedMovie?.image?.medium;
+  const imageUrlOriginal =
+    selectedMovie?.image?.original
+  const imageUrlMedium = selectedMovie?.image?.medium;
 
   const title = selectedMovie?.name || "No Title available";
   const releaseYear = selectedMovie?.premiered
@@ -33,14 +34,24 @@ function MovieDetailsModal({ selectedMovie, handleCloseModal }) {
 
         <div className="relative w-full h-64 sm:h-80 md:h-96 shrink-0">
           {
-            imageUrl ? (
+            imageUrlOriginal ? (
               <img
-            src={imageUrl}
+            src={imageUrlOriginal}
             alt={title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-top-left"
           />
             ) : (
               <div className="text-white text-center mt-20 font-bold text-2xl">No Image Available</div>
+            )
+          }{
+            imageUrlMedium ? (
+              <img
+            src={imageUrlMedium}
+            alt={title}
+            className="hidden md:block absolute top-20 right-10  h-full object-contain z-20 rounded-4xl "
+          />
+            ) : (
+              <div className="hidden  md:block absolute top-20 right-10  h-full object-contain z-20 rounded-4xl  text-white text-center mt-20 font-bold text-2xl">No Image Available</div>
             )
           }
 
