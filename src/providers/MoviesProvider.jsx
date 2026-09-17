@@ -7,6 +7,7 @@ export const MovieContext = createContext(null);
 function MoviesProvider({ children }) {
   const [movies, setMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState(null);
+
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(true);
@@ -19,12 +20,12 @@ function MoviesProvider({ children }) {
         return;
       }
 
-      const resMovies = await getMoviesBySearch(searchQuery);
-       if(resMovies.length === 0){
+      const searchedMoviesResult = await getMoviesBySearch(searchQuery);
+       if(searchedMoviesResult.length === 0){
         setSearchedMovies([]);
         return;
        }
-      setSearchedMovies(resMovies);
+      setSearchedMovies(searchedMoviesResult);
     } catch (err) {
         setError(true);
         setErrorMessage(err.message);

@@ -1,16 +1,42 @@
-# React + Vite
+# Foundation Program Assignment 2
+## Project: greatMovies 2026 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HI! This is my greatMovies project for Foundation Program Assignment 2.
 
-Currently, two official plugins are available:
+Basically, I am doing here is making a very simple and clean designed movie explorer. You can see all movies and search for your favorite movies. It fetch data from TVMaze API. I tried to make the design minimal and aesthetic with dark theme!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## what features i implemented of this project
+1. Show home page with good hero section with CTA Button (Explore All Movies) 
+1. Movie List Display with Movie Card 
+2. Search Functionality with Search Bar
+3. Movie Details Modal
+4. React Context API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## What I learn from this project
+
+### The `dangerouslySetInnerHTML` Case!
+
+This is very important thing I learn. In my `MovieDetailsModal`, the API give me movie summary but it have HTML tags inside it (like `<p>` and `<b>`). If I just render normal `{summary}`, React try to protect me and print the exact `<p>` in the screen, which look very ugly!
+
+So I have to use `dangerouslySetInnerHTML={{ __html: summaryHTML }}` to tell React to parse it as real HTML.
+
+But **why I use self close div?** Like this:
+
+```jsx
+<div dangerouslySetInnerHTML={{ __html: summaryHTML }} />
+```
+
+Because React have a very strict rule! If I use `dangerouslySetInnerHTML`, the div is forbidden to have any children. If I do `<div dangerouslySetInnerHTML={...}>some text</div>`, React get very confused what to render and crash. So by writing it as a self-close tag `<div />`, it is the safest way to tell React that this div is completely empty and controlled 100% by the innerHTML!
+
+## Tech Stack
+
+- React + Vite
+- Tailwind CSS (for the premium simple clean looks)
+- Lucide React
+- TVMaze API
+
+Thank you for checking my project!

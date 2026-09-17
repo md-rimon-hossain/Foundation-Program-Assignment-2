@@ -11,8 +11,7 @@ function HeroSection() {
           alt="Movies Background"
           className="w-full h-full object-cover opacity-80"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#141414] via-[#141414]/60 to-transparent"></div>
-        <div className="absolute inset-0 bg-black/30"></div>
+  
       </div>
 
       <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto">
